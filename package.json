@@ -1,0 +1,15 @@
+{
+  "author": {
+    "name": "Edenilson Lisboa",
+    "url": "https://github.com/efoxbr"
+  },
+  "dependencies": {
+    "ffi": "~2.2.0"
+  },
+  "description": "Experimental bindings to the Luminati SDK for NW.js applications.",
+  "homepage": "https://github.com/efoxbr/nw-luminati-sdk/",
+  "license": "MIT",
+  "main": "./lib/main.js",
+  "name": "nw-luminati-sdk",
+  "version": "0.0.1"
+}
