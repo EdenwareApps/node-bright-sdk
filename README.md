@@ -1,5 +1,5 @@
 # nw-luminati-sdk
-Experimental bindings to the Luminati SDK for NW.js applications. Coming soon.
+Experimental bindings to the Luminati SDK for NW.js applications. Unofficial, under development.
 
 More about NW.js (node-webkit) at: https://nwjs.io
 
