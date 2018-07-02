@@ -5,7 +5,7 @@ More about NW.js (node-webkit) at: https://nwjs.io
 
 # Sample usage
 ```
-var lum = require('nw-luminati-sdk');
+var lum = require('nw-luminati-sdk')(console);
 var reason = lum.ref.alloc('int');
 if(lum.isSupported(reason)){
 	lum.setAppName('MyApp');
