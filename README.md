@@ -14,8 +14,6 @@ if(lum.isSupported(reason)){
 	lum.setBgColor('#ffffffff');
 	lum.setBtnColor('#ff1036a5');
 	lum.setTxtColor('#ff000000');
-	lum.setDlgSize(500);
-	lum.setPeerTxt(lum.PEER_TXT_I_AGREE);
 	lum.setNotPeerTxt(lum.NOT_PEER_TXT_I_DISAGREE);
 	lum.setAppName(gui.App.manifest.window.title);
 	var choice = lum.getChoice();
