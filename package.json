@@ -4,7 +4,7 @@
     "url": "https://github.com/efoxbr"
   },
   "dependencies": {
-	"ffi": "~2.3.0"
+    "ffi": "~2.2.0"
   },
   "description": "Experimental bindings to the Luminati SDK for NW.js applications.",
   "homepage": "https://github.com/efoxbr/nw-luminati-sdk/",
