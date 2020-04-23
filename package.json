@@ -11,5 +11,5 @@
   "license": "MIT",
   "main": "./lib/main.js",
   "name": "nw-luminati-sdk",
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
