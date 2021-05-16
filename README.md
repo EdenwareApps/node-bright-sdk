@@ -1,5 +1,5 @@
 # nw-luminati-sdk
-FFI bindings to the Bright Data SDK (formerly Luminati SDK) for NW.js applications. Unofficial, feel free to contribute.
+FFI bindings to the Bright SDK (formerly Luminati SDK) for NW.js applications. Unofficial, feel free to contribute.
 
 More about NW.js (node-webkit) at: https://nwjs.io
 
