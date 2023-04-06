@@ -10,6 +10,7 @@ npm install efoxbr/node-bright-sdk
 # Sample usage
 ```
 var BrightSDK = require('node-bright-sdk');
+// var brd = new BrightSDK({dllPath: '/.../sdk.dll'})
 var brd = new BrightSDK()
 brd.setAppName('MyApp');
 brd.setTosLink('https://./license/');
