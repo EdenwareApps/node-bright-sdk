@@ -1,161 +1,282 @@
-Microsoft (R) COFF/PE Dumper Version 14.16.27035.0
+Microsoft (R) COFF/PE Dumper Version 14.00.24210.0
 Copyright (C) Microsoft Corporation.  All rights reserved.
-       
-Dump of file C:\Users\Edenilson\Desktop\lum_sdk32.dll
+
+
+Dump of file J:\PROJECTS\MEGACUBO\NWJS_PROD_X86\lum_sdk32.dll
 
 File Type: DLL
 
   Section contains the following exports for lum_sdk32.dll
 
     00000000 characteristics
-    60978A7F time date stamp Sun May  9 04:08:47 2021
+    633F00D9 time date stamp Thu Oct  6 13:22:49 2022
         0.00 version
            1 ordinal base
-          50 number of functions
-          50 number of names
+         110 number of functions
+         110 number of names
 
     ordinal hint RVA      name
 
-          1    0 00001BA0 ?lum_sdk_clear_choice@@YGXXZ
-          2    1 00001B80 ?lum_sdk_get_choice@@YGHXZ
-          3    2 000017F0 ?lum_sdk_init@@YGXPAD@Z
-          4    3 00001850 ?lum_sdk_init_monitor@@YGXPAD@Z
-          5    4 00001820 ?lum_sdk_init_ui@@YGXPAD@Z
-          6    5 000017D0 ?lum_sdk_is_supported2@@YGHPAH@Z
-          7    6 000017C0 ?lum_sdk_is_supported@@YGHXZ
-          8    7 00001A60 ?lum_sdk_set_app_name@@YGXPAD@Z
-          9    8 00001AF0 ?lum_sdk_set_benefit_txt@@YGXPAD@Z
-         10    9 000019D0 ?lum_sdk_set_bg_color@@YGXPAD@Z
-         11    A 00001A00 ?lum_sdk_set_btn_color@@YGXPAD@Z
-         12    B 00001BC0 ?lum_sdk_set_choice_change_cb@@YGXP6GXXZ@Z
-         13    C 00001930 ?lum_sdk_set_dlg_pos@@YGXNN@Z
-         14    D 00001900 ?lum_sdk_set_dlg_pos_type@@YGXW4dlg_pos_type_t@@@Z
-         15    E 00001AC0 ?lum_sdk_set_logo_link@@YGXPAD@Z
-         16    F 00001B50 ?lum_sdk_set_not_peer_txt@@YGXW4not_peer_txt_t@@@Z
-         17   10 00001B20 ?lum_sdk_set_peer_txt@@YGXW4peer_txt_t@@@Z
-         18   11 00001A90 ?lum_sdk_set_tos_link@@YGXPAD@Z
-         19   12 00001A30 ?lum_sdk_set_txt_color@@YGXPAD@Z
-         20   13 000019A0 ?lum_sdk_set_txt_culture@@YGXPAD@Z
-         21   14 00001880 ?lum_sdk_uninit@@YGXXZ
-         22   15 00002FE0 _dotnet45_cleanup@4
-         23   16 00002E30 _dotnet45_download@8
-         24   17 00002D30 _dotnet45_init@4
-         25   18 00002EE0 _dotnet45_install_exec@8
-         26   19 00002F60 _dotnet45_install_res@8
-         27   1A 00002D70 _dotnet45_verify@4
-         28   1B 00001790 _lum_sdk_check_peer_c@4
-         29   1C 00003080 _lum_sdk_check_supported@0
-         30   1D 00001740 _lum_sdk_clear_choice_c@0
-         31   1E 00001720 _lum_sdk_get_choice_c@0
-         32   1F 00001390 _lum_sdk_init_c@4
-         33   20 000013F0 _lum_sdk_init_monitor_c@4
-         34   21 000013C0 _lum_sdk_init_ui_c@4
-         35   22 00001360 _lum_sdk_is_supported2_c@8
-         36   23 00001350 _lum_sdk_is_supported_c@0
-         37   24 00001600 _lum_sdk_set_app_name_c@4
-         38   25 00001690 _lum_sdk_set_benefit_txt_c@4
-         39   26 00001570 _lum_sdk_set_bg_color_c@4
-         40   27 000015A0 _lum_sdk_set_btn_color_c@4
-         41   28 00001760 _lum_sdk_set_choice_change_cb_c@4
-         42   29 000014D0 _lum_sdk_set_dlg_pos_c@16
-         43   2A 000014A0 _lum_sdk_set_dlg_pos_type_c@4
-         44   2B 00001660 _lum_sdk_set_logo_link_c@4
-         45   2C 000016F0 _lum_sdk_set_not_peer_txt_c@4
-         46   2D 000016C0 _lum_sdk_set_peer_txt_c@4
-         47   2E 00001630 _lum_sdk_set_tos_link_c@4
-         48   2F 000015D0 _lum_sdk_set_txt_color_c@4
-         49   30 00001540 _lum_sdk_set_txt_culture_c@4
-         50   31 00001420 _lum_sdk_uninit_c@0
+          1    0 00001DE0 ?brd_sdk_close@@YGXXZ
+          2    1 00002080 ?brd_sdk_fix_service_status@@YGXXZ
+          3    2 00001E20 ?brd_sdk_get_consent_choice@@YGHXZ
+          4    3 00001E60 ?brd_sdk_get_uuid@@YGPADXZ
+          5    4 00001D20 ?brd_sdk_init@@YGXXZ
+          6    5 00001DA0 ?brd_sdk_opt_out@@YGXXZ
+          7    6 00002450 ?brd_sdk_set_agree_txt@@YGXW4peer_txt_t@@@Z
+          8    7 00002210 ?brd_sdk_set_app_name@@YGXPAD@Z
+          9    8 000021B0 ?brd_sdk_set_appid@@YGXPAD@Z
+         10    9 00001EB0 ?brd_sdk_set_benefit@@YGXPAD@Z
+         11    A 000022D0 ?brd_sdk_set_benefit_txt@@YGXPAD@Z
+         12    B 00002330 ?brd_sdk_set_bg_color@@YGXPAD@Z
+         13    C 00002390 ?brd_sdk_set_btn_color@@YGXPAD@Z
+         14    D 00001F10 ?brd_sdk_set_choice_change_cb@@YGXP6GXH@Z@Z
+         15    E 000024B0 ?brd_sdk_set_disagree_txt@@YGXW4not_peer_txt_t@@@Z
+         16    F 00002270 ?brd_sdk_set_logo_link@@YGXPAD@Z
+         17   10 000020D0 ?brd_sdk_set_service_auto_start@@YGXH@Z
+         18   11 00002030 ?brd_sdk_set_service_status_change_cb@@YGXP6GXH@Z@Z
+         19   12 00001FD0 ?brd_sdk_set_skip_consent_on_init@@YGXE@Z
+         20   13 00001F70 ?brd_sdk_set_test_mode@@YGXE@Z
+         21   14 000023F0 ?brd_sdk_set_txt_color@@YGXPAD@Z
+         22   15 00001D60 ?brd_sdk_show_consent@@YGXXZ
+         23   16 00002160 ?brd_sdk_start_service@@YGXXZ
+         24   17 00002120 ?brd_sdk_stop_service@@YGXXZ
+         25   18 00001C80 ?lum_sdk_clear_choice@@YGXXZ
+         26   19 00001950 ?lum_sdk_enable_beta@@YGXXZ
+         27   1A 00001CD0 ?lum_sdk_get_bw@@YGPADH@Z
+         28   1B 00001C20 ?lum_sdk_get_choice@@YGHXZ
+         29   1C 000018A0 ?lum_sdk_init@@YGXPAD@Z
+         30   1D 00001900 ?lum_sdk_init_monitor@@YGXPAD@Z
+         31   1E 000018D0 ?lum_sdk_init_ui@@YGXPAD@Z
+         32   1F 00001880 ?lum_sdk_is_supported2@@YGHPAH@Z
+         33   20 00001870 ?lum_sdk_is_supported@@YGHXZ
+         34   21 00001B00 ?lum_sdk_set_app_name@@YGXPAD@Z
+         35   22 00001970 ?lum_sdk_set_appid@@YGXPAD@Z
+         36   23 00001B90 ?lum_sdk_set_benefit_txt@@YGXPAD@Z
+         37   24 00001A70 ?lum_sdk_set_bg_color@@YGXPAD@Z
+         38   25 00001AA0 ?lum_sdk_set_btn_color@@YGXPAD@Z
+         39   26 00001CA0 ?lum_sdk_set_choice_change_cb@@YGXP6GXXZ@Z
+         40   27 00001C60 ?lum_sdk_set_choice_not_peer@@YGXXZ
+         41   28 000017A0 ?lum_sdk_set_choice_not_peer_c@@YGXXZ
+         42   29 00001C40 ?lum_sdk_set_choice_peer@@YGXXZ
+         43   2A 00001780 ?lum_sdk_set_choice_peer_c@@YGXXZ
+         44   2B 00001A10 ?lum_sdk_set_dlg_flavour@@YGXW4dlg_flavour_t@@@Z
+         45   2C 000019D0 ?lum_sdk_set_dlg_pos@@YGXNN@Z
+         46   2D 000019A0 ?lum_sdk_set_dlg_pos_type@@YGXW4dlg_pos_type_t@@@Z
+         47   2E 00001B60 ?lum_sdk_set_logo_link@@YGXPAD@Z
+         48   2F 00001BF0 ?lum_sdk_set_not_peer_txt@@YGXW4not_peer_txt_t@@@Z
+         49   30 00001BC0 ?lum_sdk_set_peer_txt@@YGXW4peer_txt_t@@@Z
+         50   31 00001B30 ?lum_sdk_set_tos_link@@YGXPAD@Z
+         51   32 00001AD0 ?lum_sdk_set_txt_color@@YGXPAD@Z
+         52   33 00001A40 ?lum_sdk_set_txt_culture@@YGXPAD@Z
+         53   34 00001930 ?lum_sdk_uninit@@YGXXZ
+         54   35 00001DC0 _brd_sdk_close_c@0
+         55   36 00002060 _brd_sdk_fix_service_status_c@0
+         56   37 00001E00 _brd_sdk_get_consent_choice_c@0
+         57   38 00001E40 _brd_sdk_get_uuid_c@0
+         58   39 00001D00 _brd_sdk_init_c@0
+         59   3A 00001D80 _brd_sdk_opt_out_c@0
+         60   3B 00002420 _brd_sdk_set_agree_txt_c@4
+         61   3C 000021E0 _brd_sdk_set_app_name_c@4
+         62   3D 00002180 _brd_sdk_set_appid_c@4
+         63   3E 00001E80 _brd_sdk_set_benefit_c@4
+         64   3F 000022A0 _brd_sdk_set_benefit_txt_c@4
+         65   40 00002300 _brd_sdk_set_bg_color_c@4
+         66   41 00002360 _brd_sdk_set_btn_color_c@4
+         67   42 00001EE0 _brd_sdk_set_choice_change_cb_c@4
+         68   43 00002480 _brd_sdk_set_disagree_txt_c@4
+         69   44 00002240 _brd_sdk_set_logo_link_c@4
+         70   45 000020A0 _brd_sdk_set_service_auto_start_c@4
+         71   46 00002000 _brd_sdk_set_service_status_change_cb_c@4
+         72   47 00001FA0 _brd_sdk_set_skip_consent_on_init_c@4
+         73   48 00001F40 _brd_sdk_set_test_mode_c@4
+         74   49 000023C0 _brd_sdk_set_txt_color_c@4
+         75   4A 00001D40 _brd_sdk_show_consent_c@0
+         76   4B 00002140 _brd_sdk_start_service_c@0
+         77   4C 00002100 _brd_sdk_stop_service_c@0
+         78   4D 00003FA0 _dotnet45_cleanup@4
+         79   4E 00003DF0 _dotnet45_download@8
+         80   4F 00003CC0 _dotnet45_init@4
+         81   50 00003EA0 _dotnet45_install_exec@8
+         82   51 00003F20 _dotnet45_install_res@8
+         83   52 00003D30 _dotnet45_verify@4
+         84   53 00001810 _lum_sdk_check_peer_c@4
+         85   54 00004040 _lum_sdk_check_supported@0
+         86   55 000017C0 _lum_sdk_clear_choice_c@0
+         87   56 00001490 _lum_sdk_enable_beta_c@0
+         88   57 00001840 _lum_sdk_get_bw_c@4
+         89   58 00001760 _lum_sdk_get_choice_c@0
+         90   59 000013E0 _lum_sdk_init_c@4
+         91   5A 00001440 _lum_sdk_init_monitor_c@4
+         92   5B 00001410 _lum_sdk_init_ui_c@4
+         93   5C 000013B0 _lum_sdk_is_supported2_c@8
+         94   5D 000013A0 _lum_sdk_is_supported_c@0
+         95   5E 00001640 _lum_sdk_set_app_name_c@4
+         96   5F 000014B0 _lum_sdk_set_appid_c@4
+         97   60 000016D0 _lum_sdk_set_benefit_txt_c@4
+         98   61 000015B0 _lum_sdk_set_bg_color_c@4
+         99   62 000015E0 _lum_sdk_set_btn_color_c@4
+        100   63 000017E0 _lum_sdk_set_choice_change_cb_c@4
+        101   64 00001550 _lum_sdk_set_dlg_flavour_c@4
+        102   65 00001510 _lum_sdk_set_dlg_pos_c@16
+        103   66 000014E0 _lum_sdk_set_dlg_pos_type_c@4
+        104   67 000016A0 _lum_sdk_set_logo_link_c@4
+        105   68 00001730 _lum_sdk_set_not_peer_txt_c@4
+        106   69 00001700 _lum_sdk_set_peer_txt_c@4
+        107   6A 00001670 _lum_sdk_set_tos_link_c@4
+        108   6B 00001610 _lum_sdk_set_txt_color_c@4
+        109   6C 00001580 _lum_sdk_set_txt_culture_c@4
+        110   6D 00001470 _lum_sdk_uninit_c@0
 
   Summary
 
         4000 .data
-        8000 .rdata
+        A000 .rdata
         2000 .reloc
-      46D000 .rsrc
-       2A000 .text
+      66D000 .rsrc
+       2C000 .text
         1000 .tls
 
 ---       
  
        
        
-Microsoft (R) COFF/PE Dumper Version 14.16.27035.0
+Microsoft (R) COFF/PE Dumper Version 14.00.24210.0
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
-Dump of file C:\Users\Edenilson\Desktop\lum_sdk64.dll
+
+Dump of file J:\PROJECTS\MEGA2020-NW\NWJS\lum_sdk64.dll
 
 File Type: DLL
 
   Section contains the following exports for lum_sdk64.dll
 
     00000000 characteristics
-    60978A7E time date stamp Sun May  9 04:08:46 2021
+    633F00CE time date stamp Thu Oct  6 13:22:38 2022
         0.00 version
            1 ordinal base
-          50 number of functions
-          50 number of names
+         110 number of functions
+         110 number of names
 
     ordinal hint RVA      name
 
-          1    0 00001DF0 ?lum_sdk_clear_choice@@YAXXZ
-          2    1 00001DC0 ?lum_sdk_get_choice@@YAHXZ
-          3    2 00001960 ?lum_sdk_init@@YAXPEAD@Z
-          4    3 000019E0 ?lum_sdk_init_monitor@@YAXPEAD@Z
-          5    4 000019A0 ?lum_sdk_init_ui@@YAXPEAD@Z
-          6    5 00001930 ?lum_sdk_is_supported2@@YAHPEAH@Z
-          7    6 00001910 ?lum_sdk_is_supported@@YAHXZ
-          8    7 00001C60 ?lum_sdk_set_app_name@@YAXPEAD@Z
-          9    8 00001D20 ?lum_sdk_set_benefit_txt@@YAXPEAD@Z
-         10    9 00001BA0 ?lum_sdk_set_bg_color@@YAXPEAD@Z
-         11    A 00001BE0 ?lum_sdk_set_btn_color@@YAXPEAD@Z
-         12    B 00001E20 ?lum_sdk_set_choice_change_cb@@YAXP6AXXZ@Z
-         13    C 00001AE0 ?lum_sdk_set_dlg_pos@@YAXNN@Z
-         14    D 00001AB0 ?lum_sdk_set_dlg_pos_type@@YAXW4dlg_pos_type_t@@@Z
-         15    E 00001CE0 ?lum_sdk_set_logo_link@@YAXPEAD@Z
-         16    F 00001D90 ?lum_sdk_set_not_peer_txt@@YAXW4not_peer_txt_t@@@Z
-         17   10 00001D60 ?lum_sdk_set_peer_txt@@YAXW4peer_txt_t@@@Z
-         18   11 00001CA0 ?lum_sdk_set_tos_link@@YAXPEAD@Z
-         19   12 00001C20 ?lum_sdk_set_txt_color@@YAXPEAD@Z
-         20   13 00001B60 ?lum_sdk_set_txt_culture@@YAXPEAD@Z
-         21   14 00001A20 ?lum_sdk_uninit@@YAXXZ
-         22   15 00003610 dotnet45_cleanup
-         23   16 000033F0 dotnet45_download
-         24   17 000032D0 dotnet45_init
-         25   18 000034C0 dotnet45_install_exec
-         26   19 00003570 dotnet45_install_res
-         27   1A 00003330 dotnet45_verify
-         28   1B 000018D0 lum_sdk_check_peer_c
-         29   1C 000036B0 lum_sdk_check_supported
-         30   1D 00001860 lum_sdk_clear_choice_c
-         31   1E 00001830 lum_sdk_get_choice_c
-         32   1F 000013D0 lum_sdk_init_c
-         33   20 00001450 lum_sdk_init_monitor_c
-         34   21 00001410 lum_sdk_init_ui_c
-         35   22 00001380 lum_sdk_is_supported2_c
-         36   23 00001360 lum_sdk_is_supported_c
-         37   24 000016D0 lum_sdk_set_app_name_c
-         38   25 00001790 lum_sdk_set_benefit_txt_c
-         39   26 00001610 lum_sdk_set_bg_color_c
-         40   27 00001650 lum_sdk_set_btn_color_c
-         41   28 00001890 lum_sdk_set_choice_change_cb_c
-         42   29 00001550 lum_sdk_set_dlg_pos_c
-         43   2A 00001520 lum_sdk_set_dlg_pos_type_c
-         44   2B 00001750 lum_sdk_set_logo_link_c
-         45   2C 00001800 lum_sdk_set_not_peer_txt_c
-         46   2D 000017D0 lum_sdk_set_peer_txt_c
-         47   2E 00001710 lum_sdk_set_tos_link_c
-         48   2F 00001690 lum_sdk_set_txt_color_c
-         49   30 000015D0 lum_sdk_set_txt_culture_c
-         50   31 00001490 lum_sdk_uninit_c
+          1    0 00002160 ?brd_sdk_close@@YAXXZ
+          2    1 00002500 ?brd_sdk_fix_service_status@@YAXXZ
+          3    2 000021C0 ?brd_sdk_get_consent_choice@@YAHXZ
+          4    3 00002220 ?brd_sdk_get_uuid@@YAPEADXZ
+          5    4 00002040 ?brd_sdk_init@@YAXXZ
+          6    5 00002100 ?brd_sdk_opt_out@@YAXXZ
+          7    6 00002A00 ?brd_sdk_set_agree_txt@@YAXW4peer_txt_t@@@Z
+          8    7 00002710 ?brd_sdk_set_app_name@@YAXPEAD@Z
+          9    8 00002690 ?brd_sdk_set_appid@@YAXPEAD@Z
+         10    9 00002290 ?brd_sdk_set_benefit@@YAXPEAD@Z
+         11    A 00002810 ?brd_sdk_set_benefit_txt@@YAXPEAD@Z
+         12    B 00002890 ?brd_sdk_set_bg_color@@YAXPEAD@Z
+         13    C 00002910 ?brd_sdk_set_btn_color@@YAXPEAD@Z
+         14    D 00002310 ?brd_sdk_set_choice_change_cb@@YAXP6AXH@Z@Z
+         15    E 00002A60 ?brd_sdk_set_disagree_txt@@YAXW4not_peer_txt_t@@@Z
+         16    F 00002790 ?brd_sdk_set_logo_link@@YAXPEAD@Z
+         17   10 00002560 ?brd_sdk_set_service_auto_start@@YAXH@Z
+         18   11 00002490 ?brd_sdk_set_service_status_change_cb@@YAXP6AXH@Z@Z
+         19   12 00002410 ?brd_sdk_set_skip_consent_on_init@@YAXE@Z
+         20   13 00002390 ?brd_sdk_set_test_mode@@YAXE@Z
+         21   14 00002990 ?brd_sdk_set_txt_color@@YAXPEAD@Z
+         22   15 000020A0 ?brd_sdk_show_consent@@YAXXZ
+         23   16 00002620 ?brd_sdk_start_service@@YAXXZ
+         24   17 000025C0 ?brd_sdk_stop_service@@YAXXZ
+         25   18 00001F60 ?lum_sdk_clear_choice@@YAXXZ
+         26   19 00001B50 ?lum_sdk_enable_beta@@YAXXZ
+         27   1A 00001FD0 ?lum_sdk_get_bw@@YAPEADH@Z
+         28   1B 00001ED0 ?lum_sdk_get_choice@@YAHXZ
+         29   1C 00001A60 ?lum_sdk_init@@YAXPEAD@Z
+         30   1D 00001AE0 ?lum_sdk_init_monitor@@YAXPEAD@Z
+         31   1E 00001AA0 ?lum_sdk_init_ui@@YAXPEAD@Z
+         32   1F 00001A30 ?lum_sdk_is_supported2@@YAHPEAH@Z
+         33   20 00001A10 ?lum_sdk_is_supported@@YAHXZ
+         34   21 00001D70 ?lum_sdk_set_app_name@@YAXPEAD@Z
+         35   22 00001B80 ?lum_sdk_set_appid@@YAXPEAD@Z
+         36   23 00001E30 ?lum_sdk_set_benefit_txt@@YAXPEAD@Z
+         37   24 00001CB0 ?lum_sdk_set_bg_color@@YAXPEAD@Z
+         38   25 00001CF0 ?lum_sdk_set_btn_color@@YAXPEAD@Z
+         39   26 00001F90 ?lum_sdk_set_choice_change_cb@@YAXP6AXXZ@Z
+         40   27 00001F30 ?lum_sdk_set_choice_not_peer@@YAXXZ
+         41   28 000018F0 ?lum_sdk_set_choice_not_peer_c@@YAXXZ
+         42   29 00001F00 ?lum_sdk_set_choice_peer@@YAXXZ
+         43   2A 000018C0 ?lum_sdk_set_choice_peer_c@@YAXXZ
+         44   2B 00001C40 ?lum_sdk_set_dlg_flavour@@YAXW4dlg_flavour_t@@@Z
+         45   2C 00001BF0 ?lum_sdk_set_dlg_pos@@YAXNN@Z
+         46   2D 00001BC0 ?lum_sdk_set_dlg_pos_type@@YAXW4dlg_pos_type_t@@@Z
+         47   2E 00001DF0 ?lum_sdk_set_logo_link@@YAXPEAD@Z
+         48   2F 00001EA0 ?lum_sdk_set_not_peer_txt@@YAXW4not_peer_txt_t@@@Z
+         49   30 00001E70 ?lum_sdk_set_peer_txt@@YAXW4peer_txt_t@@@Z
+         50   31 00001DB0 ?lum_sdk_set_tos_link@@YAXPEAD@Z
+         51   32 00001D30 ?lum_sdk_set_txt_color@@YAXPEAD@Z
+         52   33 00001C70 ?lum_sdk_set_txt_culture@@YAXPEAD@Z
+         53   34 00001B20 ?lum_sdk_uninit@@YAXXZ
+         54   35 00002130 brd_sdk_close_c
+         55   36 000024D0 brd_sdk_fix_service_status_c
+         56   37 00002190 brd_sdk_get_consent_choice_c
+         57   38 000021F0 brd_sdk_get_uuid_c
+         58   39 00002010 brd_sdk_init_c
+         59   3A 000020D0 brd_sdk_opt_out_c
+         60   3B 000029D0 brd_sdk_set_agree_txt_c
+         61   3C 000026D0 brd_sdk_set_app_name_c
+         62   3D 00002650 brd_sdk_set_appid_c
+         63   3E 00002250 brd_sdk_set_benefit_c
+         64   3F 000027D0 brd_sdk_set_benefit_txt_c
+         65   40 00002850 brd_sdk_set_bg_color_c
+         66   41 000028D0 brd_sdk_set_btn_color_c
+         67   42 000022D0 brd_sdk_set_choice_change_cb_c
+         68   43 00002A30 brd_sdk_set_disagree_txt_c
+         69   44 00002750 brd_sdk_set_logo_link_c
+         70   45 00002530 brd_sdk_set_service_auto_start_c
+         71   46 00002450 brd_sdk_set_service_status_change_cb_c
+         72   47 000023D0 brd_sdk_set_skip_consent_on_init_c
+         73   48 00002350 brd_sdk_set_test_mode_c
+         74   49 00002950 brd_sdk_set_txt_color_c
+         75   4A 00002070 brd_sdk_show_consent_c
+         76   4B 000025F0 brd_sdk_start_service_c
+         77   4C 00002590 brd_sdk_stop_service_c
+         78   4D 00004B60 dotnet45_cleanup
+         79   4E 00004940 dotnet45_download
+         80   4F 00004810 dotnet45_init
+         81   50 00004A10 dotnet45_install_exec
+         82   51 00004AC0 dotnet45_install_res
+         83   52 00004880 dotnet45_verify
+         84   53 00001990 lum_sdk_check_peer_c
+         85   54 00004C00 lum_sdk_check_supported
+         86   55 00001920 lum_sdk_clear_choice_c
+         87   56 00001510 lum_sdk_enable_beta_c
+         88   57 000019D0 lum_sdk_get_bw_c
+         89   58 00001890 lum_sdk_get_choice_c
+         90   59 00001420 lum_sdk_init_c
+         91   5A 000014A0 lum_sdk_init_monitor_c
+         92   5B 00001460 lum_sdk_init_ui_c
+         93   5C 000013D0 lum_sdk_is_supported2_c
+         94   5D 000013B0 lum_sdk_is_supported_c
+         95   5E 00001730 lum_sdk_set_app_name_c
+         96   5F 00001540 lum_sdk_set_appid_c
+         97   60 000017F0 lum_sdk_set_benefit_txt_c
+         98   61 00001670 lum_sdk_set_bg_color_c
+         99   62 000016B0 lum_sdk_set_btn_color_c
+        100   63 00001950 lum_sdk_set_choice_change_cb_c
+        101   64 00001600 lum_sdk_set_dlg_flavour_c
+        102   65 000015B0 lum_sdk_set_dlg_pos_c
+        103   66 00001580 lum_sdk_set_dlg_pos_type_c
+        104   67 000017B0 lum_sdk_set_logo_link_c
+        105   68 00001860 lum_sdk_set_not_peer_txt_c
+        106   69 00001830 lum_sdk_set_peer_txt_c
+        107   6A 00001770 lum_sdk_set_tos_link_c
+        108   6B 000016F0 lum_sdk_set_txt_color_c
+        109   6C 00001630 lum_sdk_set_txt_culture_c
+        110   6D 000014E0 lum_sdk_uninit_c
 
   Summary
 
         5000 .data
         3000 .pdata
-        D000 .rdata
+        E000 .rdata
         1000 .reloc
-      46F000 .rsrc
-       2B000 .text
+      66F000 .rsrc
+       2E000 .text
         1000 .tls
-        
