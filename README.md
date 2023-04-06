@@ -1,5 +1,11 @@
 # node-bright-sdk
-[Koffi](https://koffi.dev) bindings to the [Bright SDK](https://bright-sdk.com) (formerly Luminati SDK) for Node.js, [Electron](https://electronjs.org) and [NW.js](https://nwjs.io) applications. Unofficial. Feel free to contribute.
+[Koffi](https://koffi.dev) bindings to the [Bright SDK](https://bright-sdk.com) (formerly Luminati SDK) for [Node.js](https://nodejs.org), [Electron](https://electronjs.org) and [NW.js](https://nwjs.io) applications. Unofficial. Feel free to contribute.
+
+# Install
+
+```
+npm install efoxbr/node-bright-sdk
+```
 
 # Sample usage
 ```
