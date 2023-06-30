@@ -4,12 +4,12 @@
     "url": "https://github.com/efoxbr"
   },
   "dependencies": {
-    "koffi": "^2.3.9"
+    "ffi-napi": "^3.1.0"
   },
-  "description": "FFI bindings to the Bright SDK (formerly Luminati SDK) for NW.js applications.",
+  "description": "Interface for interacting with the Bright SDK (formerly Luminati SDK) on Node.js/NW.js/Electron applications.",
   "homepage": "https://github.com/efoxbr/node-bright-sdk/",
   "license": "MIT",
   "main": "./lib/main.js",
   "name": "node-bright-sdk",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
