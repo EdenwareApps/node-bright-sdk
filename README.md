@@ -19,13 +19,13 @@ const BrightSDK = require('node-bright-sdk');
 // Create a new instance of BrightSDK
 const brightSDK = new BrightSDK();
 
-// Initialize the BrightSDK
-brightSDK.init(YOUR_UID);
-
 // Example usage
 brightSDK.on('choice', choice => {
     console.log('Choice has changed to '+ choice);
 });
+
+// Initialize the BrightSDK
+brightSDK.init(YOUR_UID);
 
 // Perform other operations with the BrightSDK
 // ...
