@@ -1,15 +1,22 @@
 {
   "author": {
     "name": "Edenilson Lisboa",
-    "url": "https://github.com/efoxbr"
+    "url": "https://github.com/EdenwareApps"
   },
   "dependencies": {
-    "ffi-napi": "^3.1.0"
+    "ffi-napi": "^3.1.0",
+    "cross-dirname": "^0.1.0"
   },
   "description": "Interface for interacting with the Bright SDK (formerly Luminati SDK) on Node.js/NW.js/Electron applications.",
-  "homepage": "https://github.com/efoxbr/node-bright-sdk/",
+  "homepage": "https://github.com/EdenwareApps/node-bright-sdk/",
   "license": "MIT",
-  "main": "./lib/main.js",
+  "main": "./lib/main.cjs",
+  "exports": {
+    ".": {
+      "require": "./lib/main.cjs",
+      "import": "./lib/main.mjs"
+    }
+  },
   "name": "node-bright-sdk",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }

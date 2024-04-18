@@ -1,6 +1,6 @@
 # BrightSDK
 
-[![License](https://img.shields.io/github/license/efoxbr/node-bright-sdk.svg)](https://opensource.org/licenses/LICENSE)
+[![License](https://img.shields.io/github/license/EdenwareApps/node-bright-sdk.svg)](https://opensource.org/licenses/LICENSE)
 
 A module that provides an interface for interacting with the Bright SDK (formerly Luminati SDK) on Node.js/NW.js/Electron applications. Unofficial, feel free to contribute.
 
@@ -8,24 +8,24 @@ A module that provides an interface for interacting with the Bright SDK (formerl
 ## Installation
 
 ```shell
-npm install efoxbr/node-bright-sdk
+npm install EdenwareApps/node-bright-sdk
 ```
 
 ## Usage
 
 ```javascript
-const BrightSDK = require('node-bright-sdk');
+const BrightSDK = require('node-bright-sdk'); // on ESM: import BrightSDK from 'node-bright-sdk'
 
 // Create a new instance of BrightSDK
 const brightSDK = new BrightSDK();
+
+// Initialize the BrightSDK
+brightSDK.init(YOUR_UID);
 
 // Example usage
 brightSDK.on('choice', choice => {
     console.log('Choice has changed to '+ choice);
 });
-
-// Initialize the BrightSDK
-brightSDK.init(YOUR_UID);
 
 // Perform other operations with the BrightSDK
 // ...
