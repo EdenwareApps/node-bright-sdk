@@ -4,7 +4,7 @@
     "url": "https://github.com/EdenwareApps"
   },
   "dependencies": {
-    "ffi-napi": "^3.1.0",
+    "ffi-napi": "^4.0.3",
     "cross-dirname": "^0.1.0"
   },
   "description": "Interface for interacting with the Bright SDK (formerly Luminati SDK) on Node.js/NW.js/Electron applications.",
