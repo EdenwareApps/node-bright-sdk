@@ -14,25 +14,36 @@ npm install EdenwareApps/node-bright-sdk
 ## Usage
 
 ```javascript
-const BrightSDK = require('node-bright-sdk'); // on ESM: import BrightSDK from 'node-bright-sdk'
+const BrightSDK = require('node-bright-sdk')
 
-// Create a new instance of BrightSDK
-const brightSDK = new BrightSDK();
-
-// Initialize the BrightSDK
-brightSDK.init(YOUR_UID);
-
-// Example usage
+const brightSDK = new BrightSDK()
+brightSDK.init(YOUR_BRIGHT_SDK_ID)
 brightSDK.on('choice', choice => {
-    console.log('Choice has changed to '+ choice);
-});
-
+    console.log('Choice has changed to '+ choice)
+})
+let currentChoice = brightSDK.getChoice() // 0=uninitialized, 1=agree, 2=disagree
 // Perform other operations with the BrightSDK
-// ...
-
 // Uninitialize the BrightSDK
-brightSDK.uninit();
+brightSDK.uninit()
 ```
+
+Using promises or ESM:
+
+```javascript
+import BrightSDK from 'node-bright-sdk'
+
+const brightSDK = new BrightSDK()
+await brightSDK.promises.init(YOUR_BRIGHT_SDK_ID)
+brightSDK.on('choice', choice => {
+    console.log('Choice has changed to '+ choice)
+})
+let currentChoice = await brightSDK.promises.getChoice() // 0=uninitialized, 1=agree, 2=disagree
+// Perform other operations with the BrightSDK
+// Uninitialize the BrightSDK
+await brightSDK.promises.uninit()
+```
+
+
 
 ## API
 
