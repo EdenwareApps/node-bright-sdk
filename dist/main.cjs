@@ -7,6 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _events = require("events");
 var _module = require("module");
+var _crossDirname = require("cross-dirname");
+var _path = _interopRequireDefault(require("path"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -25,8 +28,6 @@ function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
-var _require = (0, _module.createRequire)(import.meta.url);
-
 //
 // 1) Koffi loading
 //
@@ -34,7 +35,8 @@ var koffi = null;
 function loadKoffi() {
   if (koffi) return koffi;
   try {
-    var mod = _require('koffi');
+    var require = (0, _module.createRequire)((0, _crossDirname.getFilename)());
+    var mod = require('koffi');
     koffi = mod["default"] || mod;
     return koffi;
   } catch (err) {
@@ -93,8 +95,7 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
 
     // mount default path if not provided in opts
     if (!_this.dllPath) {
-      var path = _require('path');
-      _this.dllPath = path.join(opts.dir || path.dirname(process.execPath), 'lum_sdk' + _this.arch + '.dll').replace(/\\/g, '/');
+      _this.dllPath = _path["default"].join(opts.dir || _path["default"].dirname(process.execPath), 'lum_sdk' + _this.arch + '.dll').replace(/\\/g, '/');
     }
     opts.skipPreparing || _this.prepare();
     _this.on('choice', function (choice) {
@@ -106,7 +107,8 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
   return _createClass(BrightSDK, [{
     key: "prepare",
     value: function prepare() {
-      var _this2 = this;
+      var _this2 = this,
+        _this$lib;
       if (this.lib) return;
       var k = loadKoffi();
       this.lib = k.load(this.dllPath);
@@ -147,32 +149,35 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
       // 4) DLL functions table
       var tableDef = {
         // just x86 table, x64 table will be auto generated from it
-        'checkSupported': ['_lum_sdk_check_supported@0', ['void', []]],
-        'clearChoice': ['_lum_sdk_clear_choice_c@0', ['void', []]],
-        'getChoice': ['_lum_sdk_get_choice_c@0', ['int', []]],
-        'init': ['_lum_sdk_init_c@4', ['void', ['string']]],
-        'initMonitor': ['_lum_sdk_init_monitor_c@4', ['void', ['string']]],
-        'initUI': ['_lum_sdk_init_ui_c@4', ['void', ['string']]],
-        'isSupported2': ['_lum_sdk_is_supported2_c@8', ['int', ['int *']]],
-        'isSupported': ['_lum_sdk_is_supported_c@0', ['int', ['int *']]],
-        'setSkipConsentOnInit': ['_brd_sdk_set_skip_consent_on_init_c@4', ['void', ['bool']]],
-        'setAppName': ['_brd_sdk_set_app_name_c@4', ['void', ['string']]],
-        'setBgColor': ['_brd_sdk_set_bg_color_c@4', ['void', ['string']]],
-        'setBtnColor': ['_brd_sdk_set_btn_color_c@4', ['void', ['string']]],
-        'setDlgPos': ['_lum_sdk_set_dlg_pos_c@16', ['void', ['int']]],
-        'setDlgPosType': ['_lum_sdk_set_dlg_pos_type_c@4', ['void', ['int']]],
-        'setLogoLink': ['_brd_sdk_set_logo_link_c@4', ['void', ['string']]],
-        'setNotPeerTxt': ['_lum_sdk_set_not_peer_txt_c@4', ['void', ['int']]],
-        'setTosLink': ['_lum_sdk_set_tos_link_c@4', ['void', ['string']]],
-        'setTxtColor': ['_lum_sdk_set_txt_color_c@4', ['void', ['string']]],
-        'setTxtCulture': ['_lum_sdk_set_txt_culture_c@4', ['void', ['string']]],
-        'setBenefitTxt': ['_lum_sdk_set_benefit_txt_c@4', ['void', ['string']]],
-        'uninit': ['_lum_sdk_uninit_c@0', ['void', []]]
+        'checkSupported': ['lum_sdk_check_supported', ['void', []]],
+        'clearChoice': ['lum_sdk_clear_choice_c', ['void', []]],
+        'getChoice': ['lum_sdk_get_choice_c', ['int', []]],
+        'init': ['lum_sdk_init_c', ['void', ['string']]],
+        'initMonitor': ['lum_sdk_init_monitor_c', ['void', ['string']]],
+        'initUI': ['lum_sdk_init_ui_c', ['void', ['string']]],
+        'isSupported': ['brd_sdk_is_supported_c', ['int', []]],
+        'setSkipConsentOnInit': ['brd_sdk_set_skip_consent_on_init_c', ['void', ['bool']]],
+        'setAppName': ['brd_sdk_set_app_name_c', ['void', ['string']]],
+        'setBgColor': ['brd_sdk_set_bg_color_c', ['void', ['string']]],
+        'setBtnColor': ['brd_sdk_set_btn_color_c', ['void', ['string']]],
+        'setDlgPos': ['lum_sdk_set_dlg_pos_c', ['void', ['double', 'double']]],
+        'setDlgPosType': ['lum_sdk_set_dlg_pos_type_c', ['void', ['int']]],
+        'setLogoLink': ['brd_sdk_set_logo_link_c', ['void', ['string']]],
+        'setNotPeerTxt': ['lum_sdk_set_not_peer_txt_c', ['void', ['int']]],
+        'setTosLink': ['lum_sdk_set_tos_link_c', ['void', ['string']]],
+        'setTxtColor': ['brd_sdk_set_txt_color_c', ['void', ['string']]],
+        'setTxtCulture': ['lum_sdk_set_txt_culture_c', ['void', ['string']]],
+        'setBenefitTxt': ['brd_sdk_set_benefit_txt_c', ['void', ['string']]],
+        'uninit': ['lum_sdk_uninit_c', ['void', []]]
       };
 
       // 5) Register each function (sync + async)
-      var cbEndpoint = this.arch === 32 ? '_lum_sdk_set_choice_change_cb_c@4' : 'lum_sdk_set_choice_change_cb_c';
-      this.setChoiceChangeCallback = this.lib.func(cbEndpoint, 'void', [protoPointer]);
+      var conv = this.arch === 32 ? '__stdcall ' : '';
+      var cbname = ['brd_sdk_set_choice_change_cb_c'];
+      if (conv) {
+        cbname.unshift(conv.trim());
+      }
+      this.setChoiceChangeCallback = (_this$lib = this.lib).func.apply(_this$lib, cbname.concat(['void', [protoPointer]]));
       this.promises.setChoiceChangeCallback = function () {
         for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
           args[_key2] = arguments[_key2];
@@ -195,9 +200,7 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
         var ret = mapType(retType);
         var params = paramTypes.map(mapType);
         var paramList = params.length === 0 ? '' : params.join(', ');
-        var conv = _this2.arch === 32 ? '__stdcall ' : '';
-        var pureName = _this2.arch === 32 ? fnName : fnName.split('@').shift().replace(/^_/, '');
-        var sig = "".concat(ret, " ").concat(conv).concat(pureName, "(").concat(paramList, ")");
+        var sig = "".concat(ret, " ").concat(conv).concat(fnName, "(").concat(paramList, ")");
         _this2[key] = _this2.lib.func(sig);
         _this2.promises[key] = function () {
           for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
