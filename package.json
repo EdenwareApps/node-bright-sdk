@@ -4,19 +4,28 @@
     "url": "https://github.com/EdenwareApps"
   },
   "dependencies": {
-    "ffi-napi": "^4.3.0",
-    "cross-dirname": "^0.1.0"
+    "cross-dirname": "^0.1.0",
+    "koffi": "^2.11.0"
   },
   "description": "Interface for interacting with the Bright SDK (formerly Luminati SDK) on Node.js/NW.js/Electron applications.",
   "homepage": "https://github.com/EdenwareApps/node-bright-sdk/",
   "license": "MIT",
   "main": "./lib/main.cjs",
+  "name": "node-bright-sdk",
+  "version": "1.0.4",
+  "scripts": {
+    "prepare": "npx babel lib/main.mjs --out-file-extension .cjs --out-dir dist"
+  },
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./lib/main.cjs",
+      "require": "./dist/main.cjs",
       "import": "./lib/main.mjs"
     }
   },
-  "name": "node-bright-sdk",
-  "version": "1.0.3"
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2"
+  }
 }
