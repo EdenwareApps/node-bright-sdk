@@ -171,7 +171,8 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
       };
 
       // 5) Register each function (sync + async)
-      this.setChoiceChangeCallback = this.lib.func('lum_sdk_set_choice_change_cb_c', 'void', [protoPointer]);
+      var cbEndpoint = this.arch === 32 ? '_lum_sdk_set_choice_change_cb_c@4' : 'lum_sdk_set_choice_change_cb_c';
+      this.setChoiceChangeCallback = this.lib.func(cbEndpoint, 'void', [protoPointer]);
       this.promises.setChoiceChangeCallback = function () {
         for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
           args[_key2] = arguments[_key2];
