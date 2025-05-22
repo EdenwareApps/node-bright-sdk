@@ -1,245 +1,337 @@
-"use strict";
+'use strict';
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
+Object.defineProperty(exports, '__esModule', {
+	value: true
 });
-exports["default"] = void 0;
-var _events = require("events");
-var _module = require("module");
-var _crossDirname = require("cross-dirname");
-var _path = _interopRequireDefault(require("path"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
-function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
-function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
-function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
-function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
-function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
-//
-// 1) Koffi loading
-//
+
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x3, _x4, _x5) { var _again = true; _function: while (_again) { var object = _x3, property = _x4, receiver = _x5; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x3 = parent; _x4 = property; _x5 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _events = require('events');
+
+var _module2 = require('module');
+
+var _crossDirname = require('cross-dirname');
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var koffi = null;
-function loadKoffi() {
-  if (koffi) return koffi;
-  try {
-    var require = (0, _module.createRequire)((0, _crossDirname.getFilename)());
-    var mod = require('koffi');
-    koffi = mod["default"] || mod;
-    return koffi;
-  } catch (err) {
-    console.error('Erro ao carregar koffi:', err);
-    throw err;
-  }
+
+/**
+ * Loads the koffi module dynamically.
+ * @returns {Object} The koffi module.
+ * @throws {Error} If loading koffi fails.
+ */
+function getKoffi() {
+	if (koffi) return koffi;
+	try {
+		var _require = (0, _module2.createRequire)((0, _crossDirname.getFilename)());
+		var mod = _require('koffi');
+		koffi = mod['default'] || mod;
+		return koffi;
+	} catch (err) {
+		console.error('Failed to load koffi:', err);
+		throw new Error('Failed to load koffi: ' + err.message);
+	}
 }
 
-//
-// 2) Choice change callback proto
-//
-var ChoiceChangeProto32 = null;
-var ChoiceChangeProto64 = null;
-function getChoiceProto(arch) {
-  var k = loadKoffi();
-  if (arch === 32) {
-    if (!ChoiceChangeProto32) {
-      ChoiceChangeProto32 = k.proto('__stdcall', 'ChoiceChangeCallback', 'void', ['int']);
-    }
-    return ChoiceChangeProto32;
-  } else {
-    if (!ChoiceChangeProto64) {
-      ChoiceChangeProto64 = k.proto('ChoiceChangeCallback', 'void', ['int']);
-    }
-    return ChoiceChangeProto64;
-  }
+function mapType(t) {
+	if (t === 'string') return 'char *';
+	if (t === 'int *') return 'int *';
+	if (!t || t === 'void') return 'void *';
+	return t;
 }
-var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
-  function BrightSDK() {
-    var _this;
-    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    _classCallCheck(this, BrightSDK);
-    _this = _callSuper(this, BrightSDK);
-    _this.debug = !!opts.debug;
-    _this.arch = process.arch === 'ia32' ? 32 : 64;
-    _this.dllPath = opts.dllPath || '';
-    _this.promises = {};
-    _this.CHOICE_NONE = 0;
-    _this.CHOICE_PEER = 1;
-    _this.CHOICE_NOT_PEER = 2;
-    _this.PEER_TXT_NO_ADS = 0;
-    _this.PEER_TXT_PREMIUM = 1;
-    _this.PEER_TXT_FREE = 2;
-    _this.PEER_TXT_DONATE = 3;
-    _this.PEER_TXT_I_AGREE = 4;
-    _this.NOT_PEER_TXT_ADS = 0;
-    _this.NOT_PEER_TXT_LIMITED = 1;
-    _this.NOT_PEER_TXT_PREMIUM = 2;
-    _this.NOT_PEER_TXT_NO_DONATE = 3;
-    _this.NOT_PEER_TXT_NOT_AGREE = 4;
-    _this.NOT_PEER_TXT_I_DISAGREE = 5;
-    _this.NOT_PEER_TXT_SUBSCRIBE = 6;
-    _this.NOT_PEER_TXT_BUY = 7;
-    _this.NOT_PEER_TXT_NO_THANK_YOU = 9;
-    _this.DLG_POS_TYPE_CENTER_OWNER = 0;
 
-    // mount default path if not provided in opts
-    if (!_this.dllPath) {
-      _this.dllPath = _path["default"].join(opts.dir || _path["default"].dirname(process.execPath), 'lum_sdk' + _this.arch + '.dll').replace(/\\/g, '/');
-    }
-    opts.skipPreparing || _this.prepare();
-    _this.on('choice', function (choice) {
-      console.log('[BrightSDK] inner choice', choice);
-    });
-    return _this;
-  }
-  _inherits(BrightSDK, _EventEmitter);
-  return _createClass(BrightSDK, [{
-    key: "prepare",
-    value: function prepare() {
-      var _this2 = this,
-        _this$lib;
-      if (this.lib) return;
-      var k = loadKoffi();
-      this.lib = k.load(this.dllPath);
+var BrightSDK = (function (_EventEmitter) {
+	_inherits(BrightSDK, _EventEmitter);
 
-      // Debounce function to limit calls to getChoice
-      var debounce = function debounce(func, delay) {
-        var timeoutId;
-        return function () {
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
-          clearTimeout(timeoutId);
-          timeoutId = setTimeout(function () {
-            return func.apply(void 0, args);
-          }, delay);
-        };
-      };
-      var ChoiceChangeCallback = debounce(function (ret) {
-        // gave up on getting choice directly, so we'll use the promise
-        _this2.promises.getChoice().then(function (choice) {
-          console.log('[BrightSDK] choiceChangeCallback', choice);
-          _this2.emit('choice', choice);
-        })["catch"](function (err) {
-          console.error('[BrightSDK] Erro ao decodificar choiceChangeCallback:', err);
-        });
-      }, 100); // 100ms delay
-      var proto = getChoiceProto(this.arch);
-      var protoPointer = k.pointer(proto);
+	function BrightSDK() {
+		var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-      // 3) Helper function to map JS types to C
-      var mapType = function mapType(t) {
-        if (t === 'string') return 'char *';
-        if (t === 'int *') return 'int *';
-        if (!t || t === 'void') return 'void *';
-        return t;
-      };
+		_classCallCheck(this, BrightSDK);
 
-      // 4) DLL functions table
-      var tableDef = {
-        // just x86 table, x64 table will be auto generated from it
-        'checkSupported': ['lum_sdk_check_supported', ['void', []]],
-        'clearChoice': ['lum_sdk_clear_choice_c', ['void', []]],
-        'getChoice': ['lum_sdk_get_choice_c', ['int', []]],
-        'init': ['lum_sdk_init_c', ['void', ['string']]],
-        'initMonitor': ['lum_sdk_init_monitor_c', ['void', ['string']]],
-        'initUI': ['lum_sdk_init_ui_c', ['void', ['string']]],
-        'isSupported': ['brd_sdk_is_supported_c', ['int', []]],
-        'setSkipConsentOnInit': ['brd_sdk_set_skip_consent_on_init_c', ['void', ['bool']]],
-        'setAppName': ['brd_sdk_set_app_name_c', ['void', ['string']]],
-        'setBgColor': ['brd_sdk_set_bg_color_c', ['void', ['string']]],
-        'setBtnColor': ['brd_sdk_set_btn_color_c', ['void', ['string']]],
-        'setDlgPos': ['lum_sdk_set_dlg_pos_c', ['void', ['double', 'double']]],
-        'setDlgPosType': ['lum_sdk_set_dlg_pos_type_c', ['void', ['int']]],
-        'setLogoLink': ['brd_sdk_set_logo_link_c', ['void', ['string']]],
-        'setNotPeerTxt': ['lum_sdk_set_not_peer_txt_c', ['void', ['int']]],
-        'setTosLink': ['lum_sdk_set_tos_link_c', ['void', ['string']]],
-        'setTxtColor': ['brd_sdk_set_txt_color_c', ['void', ['string']]],
-        'setTxtCulture': ['lum_sdk_set_txt_culture_c', ['void', ['string']]],
-        'setBenefitTxt': ['brd_sdk_set_benefit_txt_c', ['void', ['string']]],
-        'uninit': ['lum_sdk_uninit_c', ['void', []]]
-      };
+		_get(Object.getPrototypeOf(BrightSDK.prototype), 'constructor', this).call(this);
+		this.debug = !!opts.debug;
+		this.arch = process.arch === 'ia32' ? 32 : 64;
+		this.dllPath = opts.dllPath || this.getDefaultDllPath(opts.dir);
+		this.functions = {};
+		this.userChoiceCallback = null;
+		this.lib = null;
+		this._choiceCbHandle = null;
+		this.conv = this.arch === 32 ? '__stdcall ' : '';
+		this.tableDef = {
+			'close': ['brd_sdk_close_c', ['void', []]],
+			'fixServiceStatus': ['brd_sdk_fix_service_status_c', ['void', []]],
+			'getConsentChoice': ['brd_sdk_get_consent_choice_c', ['int', []]],
+			'getUUID': ['brd_sdk_get_uuid_c', ['void', []]],
+			'init': ['brd_sdk_init_c', ['void', []]],
+			'optOut': ['brd_sdk_opt_out_c', ['void', []]],
+			'setAgreeTxt': ['brd_sdk_set_agree_txt_c', ['void', ['string']]],
+			'setAppName': ['brd_sdk_set_app_name_c', ['void', ['string']]],
+			'setAppID': ['brd_sdk_set_appid_c', ['void', ['string']]],
+			'setBenefit': ['brd_sdk_set_benefit_c', ['void', ['string']]],
+			'setBenefitTxt': ['brd_sdk_set_benefit_txt_c', ['void', ['string']]],
+			'setBgColor': ['brd_sdk_set_bg_color_c', ['void', ['string']]],
+			'setBtnColor': ['brd_sdk_set_btn_color_c', ['void', ['string']]],
+			'setDisagreeTxt': ['brd_sdk_set_disagree_txt_c', ['void', ['string']]],
+			'setLogoLink': ['brd_sdk_set_logo_link_c', ['void', ['string']]],
+			'setServiceAutoStart': ['brd_sdk_set_service_auto_start_c', ['void', ['bool']]],
+			'setSkipConsentOnInit': ['brd_sdk_set_skip_consent_on_init_c', ['void', ['bool']]],
+			'setTxtColor': ['brd_sdk_set_txt_color_c', ['void', ['string']]],
+			'showConsent': ['brd_sdk_show_consent_c', ['void', []]],
+			'startService': ['brd_sdk_start_service_c', ['void', []]],
+			'stopService': ['brd_sdk_stop_service_c', ['void', []]],
+			'clearChoice': ['lum_sdk_clear_choice_c', ['void', []]] // kept for compatibility due to crashes observed in brd_sdk_opt_out_c
+		};
 
-      // 5) Register each function (sync + async)
-      var conv = this.arch === 32 ? '__stdcall ' : '';
-      var cbname = ['brd_sdk_set_choice_change_cb_c'];
-      if (conv) {
-        cbname.unshift(conv.trim());
-      }
-      this.setChoiceChangeCallback = (_this$lib = this.lib).func.apply(_this$lib, cbname.concat(['void', [protoPointer]]));
-      this.promises.setChoiceChangeCallback = function () {
-        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-          args[_key2] = arguments[_key2];
-        }
-        return new Promise(function (res, rej) {
-          var _this2$setChoiceChang;
-          (_this2$setChoiceChang = _this2.setChoiceChangeCallback).async.apply(_this2$setChoiceChang, args.concat([function (err, val) {
-            if (err) rej(err);else res(val);
-          }]));
-        });
-      };
-      var _loop = function _loop() {
-        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-          key = _Object$entries$_i[0],
-          _Object$entries$_i$ = _slicedToArray(_Object$entries$_i[1], 2),
-          fnName = _Object$entries$_i$[0],
-          _Object$entries$_i$$ = _slicedToArray(_Object$entries$_i$[1], 2),
-          retType = _Object$entries$_i$$[0],
-          paramTypes = _Object$entries$_i$$[1];
-        var ret = mapType(retType);
-        var params = paramTypes.map(mapType);
-        var paramList = params.length === 0 ? '' : params.join(', ');
-        var sig = "".concat(ret, " ").concat(conv).concat(fnName, "(").concat(paramList, ")");
-        _this2[key] = _this2.lib.func(sig);
-        _this2.promises[key] = function () {
-          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
-          }
-          return new Promise(function (res, rej) {
-            var _this2$key;
-            return (_this2$key = _this2[key]).async.apply(_this2$key, args.concat([function (err, val) {
-              return err ? rej(err) : res(val);
-            }]));
-          });
-        };
-      };
-      for (var _i = 0, _Object$entries = Object.entries(tableDef); _i < _Object$entries.length; _i++) {
-        _loop();
-      }
+		// Consent choice constants
+		this.CHOICE_NONE = 0;
+		this.CHOICE_PEER = 1;
+		this.CHOICE_NOT_PEER = 2;
+		this.DLG_POS_TYPE_CENTER_OWNER = 0;
 
-      // 6) Choice callback (registered)
-      var cb = this._choiceCbHandle = k.register(ChoiceChangeCallback, protoPointer);
-      // pass to DLL in a synchronous way
-      this.setChoiceChangeCallback(cb);
-    }
-  }, {
-    key: "time",
-    value: function time() {
-      return Date.now() / 1000;
-    }
-  }, {
-    key: "uninit",
-    value: function uninit() {
-      // unregister callback to free slot
-      if (this._choiceCbHandle) {
-        loadKoffi().unregister(this._choiceCbHandle);
-        this._choiceCbHandle = null;
-      }
-      // call uninit from DLL (async)
-      return this.promises.uninit()["catch"](function (err) {
-        return console.error('Error in uninit:', err);
-      });
-    }
-  }]);
-}(_events.EventEmitter);
+		if (!opts.skipPreparing) {
+			this.prepare()['catch'](function (err) {
+				return console.error('Failed to prepare BrightSDK:', err);
+			});
+		}
+	}
+
+	/**
+  * Generates the default DLL path if not provided.
+  * @param {string} [dir] - Optional directory path.
+  * @returns {string} The normalized DLL path.
+  */
+
+	_createClass(BrightSDK, [{
+		key: 'getDefaultDllPath',
+		value: function getDefaultDllPath(dir) {
+			return _path2['default'].join(dir || _path2['default'].dirname(process.execPath), 'lum_sdk' + this.arch + '.dll').replace(/\\/g, '/');
+		}
+
+		/**
+   * Retrieves the consent choice callback prototype based on architecture.
+   * @param {number} arch - The architecture (32 or 64).
+   * @returns {Object} The koffi prototype.
+   */
+	}, {
+		key: 'getProtoDef',
+		value: function getProtoDef(fn) {
+			var asString = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+
+			if (!this.tableDef[fn]) {
+				throw new Error('Function ' + fn + ' not found in tableDef');
+			}
+
+			var k = getKoffi();
+
+			var _tableDef$fn = _slicedToArray(this.tableDef[fn], 2);
+
+			var fnName = _tableDef$fn[0];
+
+			var _tableDef$fn$1 = _slicedToArray(_tableDef$fn[1], 2);
+
+			var retType = _tableDef$fn$1[0];
+			var paramTypes = _tableDef$fn$1[1];
+
+			var ret = mapType(retType);
+			var params = paramTypes.map(mapType);
+
+			if (asString) {
+				var conv = String(this.conv);
+				var sig = ret + ' ' + conv + fnName + '(' + params.join(', ') + ')';
+				console.log('sig', sig);
+				return sig;
+			}
+
+			var args = [fnName, ret, params];
+			if (this.arch === 32) {
+				args.unshift(this.conv);
+			}
+
+			return k.proto.apply(k, args);
+		}
+
+		/**
+   * Prepares the SDK by loading the DLL and registering functions.
+   * @returns {Promise<void>}
+   */
+	}, {
+		key: 'prepare',
+		value: function prepare() {
+			var _lib;
+
+			var k, _loop, key, protoArgs, ChoiceChangeCallback, proto, protoPointer, cbName;
+
+			return regeneratorRuntime.async(function prepare$(context$2$0) {
+				var _this = this;
+
+				while (1) switch (context$2$0.prev = context$2$0.next) {
+					case 0:
+						if (!this.lib) {
+							context$2$0.next = 2;
+							break;
+						}
+
+						return context$2$0.abrupt('return');
+
+					case 2:
+						k = getKoffi();
+						context$2$0.prev = 3;
+
+						this.lib = k.load(this.dllPath);
+						context$2$0.next = 10;
+						break;
+
+					case 7:
+						context$2$0.prev = 7;
+						context$2$0.t0 = context$2$0['catch'](3);
+						throw new Error('Failed to load DLL at ' + this.dllPath + ': ' + context$2$0.t0.message);
+
+					case 10:
+						_loop = function (key) {
+							_this.functions[key] = _this.lib.func(_this.getProtoDef(key, true));
+							_this[key] = function () {
+								for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+									args[_key] = arguments[_key];
+								}
+
+								if (_this.debug) console.log('Calling ' + key, args);
+								return new Promise(function (resolve, reject) {
+									var _functions$key;
+
+									(_functions$key = _this.functions[key]).async.apply(_functions$key, args.concat([function (err, val) {
+										if (_this.debug) console.log('Called ' + key, { err: err, val: val });
+										err ? reject(err) : resolve(val);
+									}]));
+								});
+							};
+						};
+
+						// Register DLL functions
+						for (key in this.tableDef) {
+							_loop(key);
+						}
+
+						// Register choice callback
+						protoArgs = ['ChoiceChangeCallback', 'void', ['int']];
+
+						ChoiceChangeCallback = function ChoiceChangeCallback(ret) {
+							if (_this.debug) console.log('Choice change callback', { ret: ret });
+							process.nextTick(function () {
+								try {
+									_this.emit('choice', ret);
+								} catch (err) {
+									console.error('Error in choice change callback:', err);
+								}
+							});
+						};
+
+						if (this.arch === 32) {
+							protoArgs.unshift('__stdcall');
+						}
+						proto = k.proto.apply(k, protoArgs);
+						protoPointer = k.pointer(proto);
+						cbName = ['brd_sdk_set_choice_change_cb_c'];
+
+						if (this.conv) {
+							cbName.unshift(this.conv.trim());
+						}
+						this.functions.setChoiceChangeCallback = (_lib = this.lib).func.apply(_lib, cbName.concat(['void', [protoPointer]]));
+						this._choiceCbHandle = k.register(ChoiceChangeCallback, protoPointer);
+						context$2$0.next = 23;
+						return regeneratorRuntime.awrap(new Promise(function (resolve, reject) {
+							_this.functions.setChoiceChangeCallback.async(_this._choiceCbHandle, function (err) {
+								if (err) {
+									console.error('Failed to register choice change callback:', err);
+									reject(new Error('Failed to register choice change callback'));
+								} else {
+									if (_this.debug) console.log('Choice change callback registered');
+									resolve();
+								}
+							});
+						}));
+
+					case 23:
+					case 'end':
+						return context$2$0.stop();
+				}
+			}, null, this, [[3, 7]]);
+		}
+
+		/**
+   * Sets a custom choice change callback.
+   * @param {Function} cb - The callback function.
+   */
+	}, {
+		key: 'setChoiceChangeCallback',
+		value: function setChoiceChangeCallback(cb) {
+			if (this.userChoiceCallback) {
+				this.removeListener('choice', this.userChoiceCallback);
+			}
+			this.userChoiceCallback = cb;
+			this.on('choice', cb);
+		}
+
+		/**
+   * Uninitializes the SDK, freeing resources.
+   * @returns {Promise<void>}
+   */
+	}, {
+		key: 'uninit',
+		value: function uninit() {
+			return regeneratorRuntime.async(function uninit$(context$2$0) {
+				while (1) switch (context$2$0.prev = context$2$0.next) {
+					case 0:
+						context$2$0.prev = 0;
+
+						if (this._choiceCbHandle) {
+							getKoffi().unregister(this._choiceCbHandle);
+							this._choiceCbHandle = null;
+						}
+
+						if (!this.functions.close) {
+							context$2$0.next = 5;
+							break;
+						}
+
+						context$2$0.next = 5;
+						return regeneratorRuntime.awrap(this.close());
+
+					case 5:
+						context$2$0.next = 11;
+						break;
+
+					case 7:
+						context$2$0.prev = 7;
+						context$2$0.t0 = context$2$0['catch'](0);
+
+						console.error('Error during uninitialization:', context$2$0.t0);
+						throw new Error('Uninitialization failed: ' + context$2$0.t0.message);
+
+					case 11:
+					case 'end':
+						return context$2$0.stop();
+				}
+			}, null, this, [[0, 7]]);
+		}
+	}]);
+
+	return BrightSDK;
+})(_events.EventEmitter);
+
+exports['default'] = BrightSDK;
+module.exports = exports['default'];
+
+// Map JavaScript types to C types

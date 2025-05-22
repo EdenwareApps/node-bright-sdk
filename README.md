@@ -4,7 +4,6 @@
 
 A module that provides an interface for interacting with the Bright SDK (formerly Luminati SDK) on Node.js/NW.js/Electron applications. Unofficial, feel free to contribute.
 
-
 ## Installation
 
 ```shell
@@ -13,37 +12,35 @@ npm install EdenwareApps/node-bright-sdk
 
 ## Usage
 
+### CommonJS Example
+
 ```javascript
 const BrightSDK = require('node-bright-sdk')
 
-const brightSDK = new BrightSDK()
-brightSDK.init(YOUR_BRIGHT_SDK_ID)
+const brightSDK = new BrightSDK({ debug: true })
 brightSDK.on('choice', choice => {
-    console.log('Choice has changed to '+ choice)
+    console.log('Choice has changed to ' + choice)
 })
-let currentChoice = brightSDK.getChoice() // 0=uninitialized, 1=agree, 2=disagree
+await brightSDK.init()
+let currentChoice = await brightSDK.getConsentChoice() // 0=uninitialized, 1=agree, 2=disagree
 // Perform other operations with the BrightSDK
-// Uninitialize the BrightSDK
-brightSDK.uninit()
+await brightSDK.uninit()
 ```
 
-Using promises or ESM:
+### ESM Example
 
 ```javascript
 import BrightSDK from 'node-bright-sdk'
 
-const brightSDK = new BrightSDK()
-await brightSDK.promises.init(YOUR_BRIGHT_SDK_ID)
+const brightSDK = new BrightSDK({ debug: true })
 brightSDK.on('choice', choice => {
-    console.log('Choice has changed to '+ choice)
+    console.log('Choice has changed to ' + choice)
 })
-let currentChoice = await brightSDK.promises.getChoice() // 0=uninitialized, 1=agree, 2=disagree
+await brightSDK.init()
+let currentChoice = await brightSDK.getConsentChoice() // 0=uninitialized, 1=agree, 2=disagree
 // Perform other operations with the BrightSDK
-// Uninitialize the BrightSDK
-await brightSDK.promises.uninit()
+await brightSDK.uninit()
 ```
-
-
 
 ## API
 
@@ -55,136 +52,177 @@ Creates a new instance of the BrightSDK.
   - `debug` (boolean): Enable debugging mode (default: `false`).
   - `dllPath` (string): The path to the DLL file (default: determined based on the platform and architecture).
   - `dir` (string): The directory to search for the DLL file (default: the directory of the main executable file).
+  - `skipPreparing` (boolean): If `true`, skips automatic preparation of the SDK (default: `false`).
 
-### checkSupported()
+### `prepare()`
 
-Checks if the Bright SDK is supported.
+Prepares the SDK by loading the DLL and registering functions. This is called automatically unless `skipPreparing` is set to `true`.
 
-### clearChoice()
+- **Returns**: `Promise<void>`
 
-Clears the current choice made by the user.
+### `close()`
 
-### getChoice()
+Closes the SDK.
+
+- **Returns**: `Promise<void>`
+
+### `fixServiceStatus()`
+
+Fixes the service status.
+
+- **Returns**: `Promise<void>`
+
+### `getConsentChoice()`
 
 Gets the current choice made by the user.
 
-### init(ID)
+- **Returns**: `Promise<number>` - `0` (uninitialized), `1` (agree), or `2` (disagree).
+
+### `getUUID()`
+
+Gets the UUID.
+
+- **Returns**: `Promise<void>` - The UUID is logged if `debug` is enabled.
+
+### `init()`
 
 Initializes the SDK.
 
-### initUI(ID)
+- **Returns**: `Promise<void>`
 
-Initializes the UI component of the SDK.
+### `optOut()`
 
-### isSupported2()
+Opts out of the SDK.
 
-Checks if the Bright SDK is supported. Returns an integer value.
+- **Returns**: `Promise<void>`
 
-### isSupported()
+### `setAgreeTxt(txt)`
 
-Checks if the Bright SDK is supported. Returns an integer value.
+Sets the agree text for the consent UI.
 
-### setSkipConsentOnInit(value)
+- `txt` (string): The agree text.
+- **Returns**: `Promise<void>`
 
-Sets whether to skip the consent screen during SDK initialization.
-
-- `value`: A boolean value indicating whether to skip consent on initialization.
-
-### setAppName(name)
+### `setAppName(name)`
 
 Sets the name of the application.
 
-- `name`: The name of the application.
+- `name` (string): The application name.
+- **Returns**: `Promise<void>`
 
-### setBgColor(color)
+### `setAppID(id)`
+
+Sets the ID of the application.
+
+- `id` (string): The application ID.
+- **Returns**: `Promise<void>`
+
+### `setBenefit(benefit)`
+
+Sets the benefit description.
+
+- `benefit` (string): The benefit description.
+- **Returns**: `Promise<void>`
+
+### `setBenefitTxt(txt)`
+
+Sets the benefit text for the SDK UI.
+
+- `txt` (string): The benefit text.
+- **Returns**: `Promise<void>`
+
+### `setBgColor(color)`
 
 Sets the background color of the SDK UI.
 
-- `color`: The background color in string format.
+- `color` (string): The background color (e.g., "#FFFFFF").
+- **Returns**: `Promise<void>`
 
-### setBtnColor(color)
+### `setBtnColor(color)`
 
 Sets the button color of the SDK UI.
 
-- `color`: The button color in string format.
+- `color` (string): The button color (e.g., "#FF0000").
+- **Returns**: `Promise<void>`
 
-### setDlgPos(position)
+### `setDisagreeTxt(txt)`
 
-Sets the position of the SDK dialog.
+Sets the disagree text for the consent UI.
 
-- `position`: The position of the dialog.
+- `txt` (string): The disagree text.
+- **Returns**: `Promise<void>`
 
-### setDlgPosType(positionType)
+### `setLogoLink(link)`
 
-Sets the type of position for the SDK dialog.
+Sets the logo link for the SDK UI.
 
-- `positionType`: The type of position for the dialog.
+- `link` (string): The logo URL.
+- **Returns**: `Promise<void>`
 
-### setLogoLink(link)
+### `setServiceAutoStart(value)`
 
-Sets the logo link of the SDK UI.
+Sets whether the service should start automatically.
 
-- `link`: The logo link.
+- `value` (boolean): `true` to enable auto-start, `false` otherwise.
+- **Returns**: `Promise<void>`
 
-### setNotPeerTxt(txt)
+### `setSkipConsentOnInit(value)`
 
-Sets the text for non-peer users in the SDK UI.
+Sets whether to skip the consent screen during SDK initialization.
 
-- `txt`: The text for non-peer users.
+- `value` (boolean): `true` to skip consent, `false` otherwise.
+- **Returns**: `Promise<void>`
 
-### setTosLink(link)
-
-Sets the Terms of Service (TOS) link of the SDK UI.
-
-- `link`: The TOS link.
-
-### setTxtColor(color)
+### `setTxtColor(color)`
 
 Sets the text color of the SDK UI.
 
-- `color`: The text color in string format.
+- `color` (string): The text color (e.g., "#000000").
+- **Returns**: `Promise<void>`
 
-### setTxtCulture(culture)
+### `showConsent()`
 
-Sets the text culture of the SDK UI.
+Shows the consent dialog.
 
-- `culture`: The text culture.
+- **Returns**: `Promise<void>`
 
-### setBenefitTxt(txt)
+### `startService()`
 
-Sets the benefit text of the SDK UI.
+Starts the service.
 
-- `txt`: The benefit text.
+- **Returns**: `Promise<void>`
 
-### uninit()
+### `stopService()`
 
-Uninitializes the BrightSDK and frees any allocated resources.
+Stops the service.
 
-### Events
+- **Returns**: `Promise<void>`
 
-#### Event: `choice`
+### `setChoiceChangeCallback(cb)`
 
-Emitted when the choice has changed.
+Sets a custom callback for when the user’s choice changes.
 
-### Constants
+- `cb` (function): The callback function that receives the choice value (`0`, `1`, or `2`).
+
+### `uninit()`
+
+Uninitializes the SDK and frees any allocated resources.
+
+- **Returns**: `Promise<void>`
+
+## Events
+
+### Event: `choice`
+
+Emitted when the user’s choice changes.
+
+- **Listener**: `(choice: number) => void` - The choice value (`0`, `1`, or `2`).
+
+## Constants
 
 The following constants are available on the BrightSDK instance:
 
-- `CHOICE_NONE` (number): Represents the choice value for none (0).
-- `CHOICE_PEER` (number): Represents the choice value for peer (1).
-- `CHOICE_NOT_PEER` (number): Represents the choice value for not peer (2).
-- `PEER_TXT_NO_ADS` (number): Represents the peer text value for no ads (0).
-- `PEER_TXT_PREMIUM` (number): Represents the peer text value for premium (1).
-- `PEER_TXT_FREE` (number): Represents the peer text value for free (2).
-- `PEER_TXT_DONATE` (number): Represents the peer text value for donate (3).
-- `PEER_TXT_I_AGREE` (number): Represents the peer text value for "I agree" (4).
-- `NOT_PEER_TXT_ADS` (number): Represents the not peer text value for ads (0).
-- `NOT_PEER_TXT_LIMITED` (number): Represents the not peer text value for limited (1).
-- `NOT_PEER_TXT_PREMIUM` (number): Represents the not peer text value for premium (2).
-- `NOT_PEER_TXT_NO_DONATE` (number): Represents the not peer text value for no donate (3).
-- `NOT_PEER_TXT_NOT_AGREE` (number): Represents the not peer text value for not agree (4).
-- `NOT_PEER_TXT_I_DISAGREE` (number): Represents the not peer text value for "I disagree" (5).
-- `NOT_PEER_TXT_SUBSCRIBE` (number): Represents the not peer text value for subscribe (6).
-- `NOT_PEER_TXT_BUY` (number): Represents the not peer text value for buy (7).
-- `NOT_PEER_TXT_NO_THANK_YOU` (number): Represents the not peer text value for "No, thank you" (9).
-- `DLG_POS_TYPE_CENTER_OWNER` (number): Represents the dialog position type as center owner (0).
+- `CHOICE_NONE` (number): Represents the choice value for none (`0`).
+- `CHOICE_PEER` (number): Represents the choice value for peer (`1`).
+- `CHOICE_NOT_PEER` (number): Represents the choice value for not peer (`2`).
+- `DLG_POS_TYPE_CENTER_OWNER` (number): Represents the dialog position type as center owner (`0`).
