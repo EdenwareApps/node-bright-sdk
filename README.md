@@ -12,7 +12,34 @@ npm install EdenwareApps/node-bright-sdk
 
 ## Usage
 
-### CommonJS Example
+### ESM / async example
+
+```javascript
+import BrightSDK from 'node-bright-sdk'
+
+const brightSDK = new BrightSDK({ debug: true })
+await brightSDK.setChoiceChangeCallback(choice => {
+    console.log('Choice has changed to ' + choice)
+})
+await brightSDK.setLogoLink('./default_icon.png')
+await brightSDK.setBgColor('#FFFFFFFF')
+await brightSDK.setTxtColor('#FF000000')
+await brightSDK.setBenefitTxt('Premium Resources')
+await brightSDK.setAppName('App Name Premium')
+await brightSDK.setSkipConsentOnInit(true)
+await brightSDK.init()
+
+let currentChoice = await brightSDK.getConsentChoice()
+// 0=uninitialized, 1=agree, 2=disagree
+if (currentChoice == 1) {
+    await brightSDK.clearChoice() // clear the choice for testing purposes
+    // await brightSDK.optOut()
+}
+await brightSDK.showConsent()
+// await brightSDK.uninit()
+```
+
+### CommonJS / Promises minimal example
 
 ```javascript
 const BrightSDK = require('node-bright-sdk')
@@ -21,25 +48,21 @@ const brightSDK = new BrightSDK({ debug: true })
 brightSDK.on('choice', choice => {
     console.log('Choice has changed to ' + choice)
 })
-await brightSDK.init()
-let currentChoice = await brightSDK.getConsentChoice() // 0=uninitialized, 1=agree, 2=disagree
-// Perform other operations with the BrightSDK
-await brightSDK.uninit()
-```
-
-### ESM Example
-
-```javascript
-import BrightSDK from 'node-bright-sdk'
-
-const brightSDK = new BrightSDK({ debug: true })
-brightSDK.on('choice', choice => {
-    console.log('Choice has changed to ' + choice)
+brightSDK.init().then(() => {
+    brightSDK.getConsentChoice().then(choice => {
+        console.log('Current choice is ' + choice)
+        /*
+        Perform other operations with the BrightSDK
+        brightSDK.uninit().then(() => {
+            console.log('SDK uninitialized')
+        })
+        */
+    }).catch(err => {
+        console.error('Error getting consent choice:', err)
+    })
+}).catch(err => {
+    console.error('Error initializing BrightSDK:', err)
 })
-await brightSDK.init()
-let currentChoice = await brightSDK.getConsentChoice() // 0=uninitialized, 1=agree, 2=disagree
-// Perform other operations with the BrightSDK
-await brightSDK.uninit()
 ```
 
 ## API

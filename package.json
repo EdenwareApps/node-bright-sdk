@@ -12,7 +12,7 @@
   "license": "MIT",
   "main": "./lib/main.cjs",
   "name": "node-bright-sdk",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "scripts": {
     "prepare": "npx babel lib/main.mjs --out-file dist/main.cjs"
   },

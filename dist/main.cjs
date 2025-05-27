@@ -62,6 +62,7 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
     var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     _classCallCheck(this, BrightSDK);
     _this = _callSuper(this, BrightSDK);
+    _this.currentChoice = -1;
     _this.debug = !!opts.debug;
     _this.arch = process.arch === 'ia32' ? 32 : 64;
     _this.dllPath = opts.dllPath || _this.getDefaultDllPath(opts.dir);
@@ -143,7 +144,7 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
       if (asString) {
         var conv = String(this.conv);
         var sig = "".concat(ret, " ").concat(conv).concat(fnName, "(").concat(params.join(', '), ")");
-        console.log('sig', sig);
+        this.debug && console.log('sig', sig);
         return sig;
       }
       var args = [fnName, ret, params];
@@ -187,16 +188,18 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
                 return _regeneratorRuntime().wrap(function _loop$(_context) {
                   while (1) switch (_context.prev = _context.next) {
                     case 0:
-                      _this2.functions[key] = _this2.lib.func(_this2.getProtoDef(key, true));
                       _this2[key] = function () {
                         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
                           args[_key] = arguments[_key];
                         }
-                        if (_this2.debug) console.log("Calling ".concat(key), args);
+                        _this2.debug && console.log("Calling ".concat(key), args);
+                        if (!_this2.functions[key]) {
+                          _this2.functions[key] = _this2.lib.func(_this2.getProtoDef(key, true));
+                        }
                         return new Promise(function (resolve, reject) {
                           var _this2$functions$key;
                           (_this2$functions$key = _this2.functions[key]).async.apply(_this2$functions$key, args.concat([function (err, val) {
-                            if (_this2.debug) console.log("Called ".concat(key), {
+                            _this2.debug && console.log("Called ".concat(key), {
                               err: err,
                               val: val
                             });
@@ -204,7 +207,7 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
                           }]));
                         });
                       };
-                    case 2:
+                    case 1:
                     case "end":
                       return _context.stop();
                   }
@@ -225,22 +228,16 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
               // Register choice callback
               protoArgs = ['ChoiceChangeCallback', 'void', ['int']];
               ChoiceChangeCallback = function ChoiceChangeCallback(ret) {
-                if (_this2.debug) console.log('Choice change callback', {
+                _this2.debug && console.log('Choice change callback', {
                   ret: ret
                 });
-                process.nextTick(function () {
-                  try {
-                    _this2.emit('choice', ret);
-                  } catch (err) {
-                    console.error('Error in choice change callback:', err);
-                  }
-                });
+                _this2.emit('choice', ret);
               };
               if (this.arch === 32) {
                 protoArgs.unshift('__stdcall');
               }
               proto = k.proto.apply(k, protoArgs);
-              protoPointer = k.pointer(proto); // Map JavaScript types to C types
+              protoPointer = k.pointer(proto); // Map JavaScript types to C types 
               cbName = ['brd_sdk_set_choice_change_cb_c'];
               if (this.conv) {
                 cbName.unshift(this.conv.trim());
@@ -254,7 +251,7 @@ var BrightSDK = exports["default"] = /*#__PURE__*/function (_EventEmitter) {
                     console.error('Failed to register choice change callback:', err);
                     reject(new Error('Failed to register choice change callback'));
                   } else {
-                    if (_this2.debug) console.log('Choice change callback registered');
+                    _this2.debug && console.log('Choice change callback registered');
                     resolve();
                   }
                 });
